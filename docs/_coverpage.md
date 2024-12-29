@@ -1,8 +1,8 @@
 # Dezh Technologies
 > Together we stand, Independent we fall.
 
-
-- Powered by [Docsify](https://docsify.js.org)
+- 📚 Modern tools for a decentralized and open society.
+- 🚀 Projects include Immortal and Wrapto.
 
 [Get Started](#quick-start)
-[GitHub](https://github.com/dezh-tech)
+[View on GitHub](https://github.com/dezh-tech)

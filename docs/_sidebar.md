@@ -1,4 +1,3 @@
 - [Home](/)
-- [Introduction](/introduction.md)
-- [Getting Started](/getting-started.md)
-- [FAQ](/faq.md)
+- [Articles](/articles/articles.md)
+- [Documents](/documents/documents.md)
