@@ -13,10 +13,9 @@ At Dezh Technologies, we are committed to developing tools, applications, servic
 ## Explore Our Work
 
 ### Featured Projects
+
 - **Immortal**: A scalable, high-performance Nostr relay.  
   [Learn more](https://github.com/dezh-tech/immortal)
-- **Wrapto**: A bridge connecting Pactus blockchain to other networks.  
-  [Learn more](#)
 
 ---
 

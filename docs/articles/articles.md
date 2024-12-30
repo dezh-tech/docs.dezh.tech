@@ -14,16 +14,6 @@ Dive into the technical challenges and solutions we implemented to create a high
 
 ---
 
-### Blockchain Interoperability Made Simple: The Story of Wrapto
-- **Author**: Jane Smith  
-- **Published**: November 20, 2024  
-- **Read Time**: 5 minutes  
-
-Learn about the architecture of Wrapto and how it bridges the Pactus blockchain with other networks.  
-[Read more](#)
-
----
-
 ### Performance Tuning in Decentralized Systems
 - **Author**: Alex Johnson  
 - **Published**: October 15, 2024  
@@ -42,16 +32,6 @@ A detailed guide on optimizing throughput and reducing latency in decentralized 
 - **Read Time**: 8 minutes  
 
 Step-by-step instructions to deploy and configure Immortal for optimal performance.  
-[Read more](#)
-
----
-
-### Building Your First Pactus-Integrated App with Wrapto
-- **Author**: Jane Smith  
-- **Published**: December 10, 2024  
-- **Read Time**: 6 minutes  
-
-A hands-on tutorial for developers building applications that leverage Wrapto.  
 [Read more](#)
 
 ---
