@@ -9,4 +9,4 @@ technical news and announcement about this website.
 - **Published**: december 30, 2024  
 - **Read Time**: 1 minutes  
   
-[read more](./news/introduction.md)
+[read more](news/introduction.md)
