@@ -1,3 +1,0 @@
-- [Home](/)
-- [Articles](/articles/articles.md)
-- [Documents](/documents/documents.md)
