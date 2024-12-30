@@ -12,12 +12,12 @@
 
 /* Dark mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #e2ddd6; /* Use light beige for the primary color in dark mode */
-  --ifm-color-primary-dark: #c5c0b6; /* Darker shade of beige */
-  --ifm-color-primary-darker: #a59f9a; /* Even darker beige */
-  --ifm-color-primary-darkest: #8a8580; /* Darkest beige tone */
-  --ifm-color-primary-light: #ff8f40; /* Use same lighter orange for consistency */
-  --ifm-color-primary-lighter: #ffac70; /* Lighter orange */
-  --ifm-color-primary-lightest: #ffcc99; /* Lightest orange for good contrast */
+  --ifm-color-primary: #ff4800; /* Main brand color (orange) */
+  --ifm-color-primary-dark: #d63900; /* Darker shade of orange */
+  --ifm-color-primary-darker: #b82a00; /* Even darker */
+  --ifm-color-primary-darkest: #991e00; /* Darkest version */
+  --ifm-color-primary-light: #ff8f40; /* Lighter shade of orange */
+  --ifm-color-primary-lighter: #ffac70; /* Even lighter */
+  --ifm-color-primary-lightest: #ffcc99; /* Lightest version */
   --docusaurus-highlighted-code-line-bg: rgba(244, 244, 244, 0.5); /* A lighter line highlight for readability */
 }

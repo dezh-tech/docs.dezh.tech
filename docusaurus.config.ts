@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'Dezh Documents',
-  tagline: 'Dezh technologies projects technical documentations.',
+  tagline: 'Dezh technologies projects technical documentations',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
