@@ -40,7 +40,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            '',
+            'https://github.com/dezh-tech/docs.dezh.tech/edit/main/README.md',
         },
         blog: {
           showReadingTime: true,
