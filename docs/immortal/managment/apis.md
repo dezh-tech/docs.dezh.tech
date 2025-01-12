@@ -11,7 +11,7 @@ Here is a list of APIs between manager and immortals. All of these APIs are thro
 
 Here is a list of APIs which is provided by manager and relay calls them:
 
-###  registerService
+###  RegisterService
 
 The relays call this endpoint to receive an ID (a unique id between all relays in the same system for manager to identify them). 
 
@@ -19,7 +19,7 @@ Here is an example of register request:
 
 ```proto
 // Request to register a service.
-message registerServiceRequest {
+message RegisterServiceRequest {
   string port = 1;                        // Service grpc port.
   uint32 heartbeat_duration_in_sec = 2;   // Heartbeat interval in seconds for calling Status endpoint of relay.
   ServiceTypeEnum type = 3;               // Type of the service. (e.g., RELAY)
@@ -31,7 +31,7 @@ Response example:
 
 ```proto
 // Response after registering a service.
-message registerServiceResponse {
+message RegisterServiceResponse {
   bool success = 1;                      // Indicates if registration was successful.
   optional string message = 2;           // Optional message with additional information.
   string token = 3;                      // Token assigned to the registered service.
@@ -40,7 +40,7 @@ message registerServiceResponse {
 
 > Relay will send the id in the header of `x-identifier` in each request to manager. this helps the manager to know who is talking with and take different actions for same request but different relays.
 
-### getConfig
+### GetParameters
 
 Relays will call this endpoint to get the parameters config from manager which requires the `x-identifier` header as well.
 
@@ -48,14 +48,14 @@ Request example:
 
 ```proto
 // Empty request used for methods that do not require parameters.
-message EmptyRequest {}
+message GetParametersRequest {}
 ```
 
 Response example:
 
 ```proto
 // Response containing configuration details.
-message getConfigResponse {
+message GetParametersResponse {
   limitations limitations = 1;           // Configuration limitations.
   string url = 2;                        // Relay public URL.
 }
@@ -68,7 +68,6 @@ Types used:
 message limitations {
   int32 max_message_length = 1;          // Maximum allowed message length.
   int32 max_subscriptions = 2;           // Maximum number of subscriptions allowed.
-  int32 max_filters = 3;                 // Maximum number of filters allowed.
   int32 max_subid_length = 4;            // Maximum length of a subscription ID.
   int32 min_pow_difficulty = 5;          // Minimum proof-of-work difficulty.
   bool auth_required = 6;                // Indicates if authentication is required.
@@ -90,16 +89,27 @@ enum ServiceTypeEnum {
 }
 ```
 
+### AddLog
 
-### shutdown
+Relays may send system level logs to manager.
 
-> TODO.
+```proto
+message AddLogRequest {
+  string message = 1;                   
+  string stack = 2;                      
+}
+```
 
-### addLog
+Response example:
 
-> TODO.
+```proto
+message AddLogResponse {
+  bool success = 1;               
+  optional string message = 2;         
+}
+```
 
-## Relay to Manager
+## Manager to Relay
 
 Here is a list of APIs provided by relays which would be called by managers:
 
@@ -147,4 +157,14 @@ The manager can show the response in a monitoring system, make notifications, sh
 
 ### Shutdown
 
-> TODO.
+Manager can send a shutdown signal to each relay independently.
+
+```proto
+message ShutdownRequest {}
+```
+
+Response example:
+
+```proto
+message ShutdownResponse {}
+```

@@ -10,10 +10,8 @@ Each nostr event kind has a different collection on mongo db database. This help
 
 ## Queries
 
-When immortal wants to query something from mongo db, its basically a filter. The immortal turns the normal filter and makes `n` mongo queries. `n` is the number of kind numbers in filter. it would attach the whole conditions of filter to each query and execute the queries. Currently queries are sent separately which is inefficient, we are working on it to support batch queries or increase the performance.
-
-> The special case is when someone requests a filter without kinds field, in this case immortal makes a request to some papular collections like reactions, short text notes, zaps and some more.
+When immortal wants to query something from mongo db, its basically a filter. The immortal turns the normal filter and makes `n` mongo queries. Then we use the mongo db aggregation pipeline and `$unionWith` stage to query all requested collections. If you kinds was provided it will query all tables.
 
 ## Deleting
 
-To delete some document for a NIP-09 request or Expiration or operator order from manager, we make ALL fields removed (not empty!) and we only keep the id of event. this helps us to prevent an deleted event be rewritten.
+To delete some document for a NIP-09 request or Expiration or operator order from manager, we set all fields `null` using `$unset` mongo command and we only keep the `id` of event. this helps us to prevent an deleted event be rewritten or returned to user.

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Manager
 
-This section contains the information about the manager rules and responsibilities. To findout how relays interact with manager and vice versa you can check the [APIs](./apis.md) section.
+This section contains the information about the manager rules and responsibilities. To find out how relays interact with manager and vice versa you can check the [APIs](./apis.md) section.
 
 ## White/Black Listing
 
