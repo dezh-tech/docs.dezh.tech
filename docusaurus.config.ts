@@ -118,7 +118,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://https://github.com/dezh-tech',
             },
           ],
         },
