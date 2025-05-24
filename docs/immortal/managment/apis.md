@@ -65,20 +65,20 @@ Types used:
 
 ```proto
 // Configuration limitations.
-message limitations {
-  int32 max_message_length = 1;          // Maximum allowed message length.
-  int32 max_subscriptions = 2;           // Maximum number of subscriptions allowed.
-  int32 max_subid_length = 4;            // Maximum length of a subscription ID.
-  int32 min_pow_difficulty = 5;          // Minimum proof-of-work difficulty.
-  bool auth_required = 6;                // Indicates if authentication is required.
-  bool payment_required = 7;             // Indicates if payment is required.
-  bool restricted_writes = 8;            // Indicates if writes are restricted.
-  int32 max_event_tags = 9;              // Maximum number of event tags allowed.
-  int32 max_content_length = 10;         // Maximum length of content allowed.
-  int64 created_at_lower_limit = 11;     // Lower limit for creation timestamps.
-  int64 created_at_upper_limit = 12;     // Upper limit for creation timestamps.
-  uint32 default_query_limit = 13;       // Default of query limit.
-  uint32 max_query_limit = 14;           // Maximum of query limit.
+message Limitations {
+    int32 max_message_length = 1;
+    int32 max_subscriptions = 2;
+    int32 max_subid_length = 4;
+    int32 min_pow_difficulty = 5;
+    bool auth_required = 6;
+    bool payment_required = 7;
+    bool restricted_writes = 8;
+    int32 max_event_tags = 9;
+    int32 max_content_length = 10;
+    int64 created_at_lower_limit = 11;
+    int64 created_at_upper_limit = 12;
+    uint32 default_query_limit = 13;
+    uint32 max_query_limit = 14;
 }
 
 
@@ -93,6 +93,8 @@ enum ServiceTypeEnum {
 
 Relays may send system level logs to manager.
 
+Request example:
+
 ```proto
 message AddLogRequest {
   string message = 1;                   
@@ -106,6 +108,27 @@ Response example:
 message AddLogResponse {
   bool success = 1;               
   optional string message = 2;         
+}
+```
+
+### Report
+
+Relays may receive report events (kind 1984), they are not in charge of handling it and they pass it to manager.
+
+Request example:
+
+```proto
+message SendReportRequest {
+  string event_id = 1;                                       
+}
+```
+
+Response example:
+
+```proto
+message SendReportResponse {
+  bool success = 1;               
+  optional string message = 2;        
 }
 ```
 
@@ -151,9 +174,73 @@ message Service {
 
 The manager can show the response in a monitoring system, make notifications, shutdown the relays with specific kind of issues and more.
 
-### SetConfig
+### Params
 
-> TODO.
+Manager can call the relay to hot-reload the parameters.
+
+Request example:
+
+```proto
+message UpdateParametersRequest {
+    Limitations limitations = 1;
+    string url = 2;
+}
+
+message Limitations {
+    int32 max_message_length = 1;
+    int32 max_subscriptions = 2;
+    int32 max_subid_length = 4;
+    int32 min_pow_difficulty = 5;
+    bool auth_required = 6;
+    bool payment_required = 7;
+    bool restricted_writes = 8;
+    int32 max_event_tags = 9;
+    int32 max_content_length = 10;
+    int64 created_at_lower_limit = 11;
+    int64 created_at_upper_limit = 12;
+    uint32 default_query_limit = 13;
+    uint32 max_query_limit = 14;
+}
+```
+
+Example response:
+
+```proto
+message UpdateParametersResponse {
+  bool success = 1;
+}
+```
+
+### Migration
+
+Manager can export/import huge amount of events from the relay for (user/service(?)) migration purposes using the gRPC stream.
+
+Service example:
+
+```proto
+service Migration {
+    rpc ImportEvents (stream Event) returns (ImportEventResponse);
+    rpc ExportEvents (Filter) returns (stream Event);
+}
+```
+
+Types:
+
+```proto
+message Event {
+    bytes raw = 1;
+}
+
+message Filter {
+    bytes raw = 1;
+    string pubkey = 2;
+}
+
+message ImportEventResponse {
+    bool success = 1;
+    string message = 2;
+}
+```
 
 ### Shutdown
 
